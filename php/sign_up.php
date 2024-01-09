@@ -1,6 +1,5 @@
 <?php
-       
-    include_once("./includes/connection.php");
+    include_once("../includes/connection.php");
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $name = mysqli_real_escape_string($conn, $_POST['username']);
@@ -20,15 +19,9 @@
     $conn->close();
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/sign_up.css">
-    <title>Sign Up</title>
-</head>
 <body>
+    
+    <?php  include_once("../includes/header.php");?>
     <form action="sign_up.php" method="post">
         <h2>Sign Up</h2>
         <label for="name">Name:</label>

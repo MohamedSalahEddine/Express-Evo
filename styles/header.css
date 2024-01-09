@@ -1,0 +1,107 @@
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    color: #333;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.fa-solid{
+    font-size: 1.5rem;
+}
+
+/********************************************* SIDEBAR */
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 4rem;
+}
+
+.sidenav a {
+    padding: 0.5rem 0.5rem 0.5rem 2rem;
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 1.5rem;
+    font-size: 2.2rem;
+    margin-left: 3rem;
+}
+
+.sidenav_right {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 4rem;
+}
+
+.sidenav_right a {
+    padding: 0.5rem 0.5rem 0.5rem 2rem;
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav_right a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav_right .closebtn {
+    position: absolute;
+    top: 0;
+    right: 1.5rem;
+    font-size: 2.2rem;
+}
+
+
+.header__right{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.gradient-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    border: none;
+    color: yellow;
+    /* color: rgb(214, 133, 133); */
+    text-align: center;
+    text-decoration: none;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+}

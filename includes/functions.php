@@ -24,8 +24,8 @@
 
         return "<div class='product'>
                     <h3 class='product__title'>{$product[1]}</h3>
-                    <img class='product__image' src='' alt='{$product[1]}'/>
-                    <h5 class='product__title'><span>$</span>{$product[2]}</h5>
+                    <img class='product__image' src='https://picsum.photos/200/180' alt='{$product[1]}'/>
+                    <h5 class='product__price'><span>$</span>{$product[2]}</h5>
                     <p class='product__description'>
                         {$product[4]}
                     </p>
