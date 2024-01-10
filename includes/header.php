@@ -13,18 +13,22 @@
         $currentPage = basename($_SERVER['PHP_SELF'], '.php');
 
         $cssFilePath = "{$currentPage}.css";
+        $index = false;
         
         if ( $currentPage == "index") {
             echo "<link rel='stylesheet' href=./styles/{$cssFilePath}>";
             echo "<link rel='stylesheet' href='./styles/header.css'>";
             echo "<link rel='stylesheet' href='./styles/app.css'>";
             echo "<script src='./js/index.js' defer></script>";
+            $dots = ".";
+            $index = true;
         }
         if ( $currentPage !== "index") {
             echo "<link rel='stylesheet' href='../styles/{$cssFilePath}'>";
             echo "<link rel='stylesheet' href='../styles/header.css'>";
             echo "<link rel='stylesheet' href='../styles/app.css'>";
             echo "<script src='../js/index.js' defer></script>";
+            $dots = "..";
         }
     ?>
     
@@ -37,10 +41,10 @@
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <nav>
                 <ul>
-                    <li><a href="#"><i class="fa-solid ml-20 fa-shop fa-sm"></i>produits</a></li>
-                    <li><a href="#"><i class="fa-solid ml-20 fa-receipt fa-sm"></i>temoignages</a></li>
-                    <li><a href="#"><i class="fa-solid ml-20 fa-bell-concierge fa-sm"></i>nos services</a></li>
-                    <li><a href="#"><i class="fa-solid ml-20 fa-phone fa-sm"></i>nous contacter</a></li>
+                    <li><a href="<?php echo $index ? ".":"..";?>/php/products.php"><i class="fa-solid ml-20 fa-shop fa-sm"></i>produits</a></li>
+                    <li><a href="<?php echo $index ? ".":"..";?>/php/testimonials.php"><i class="fa-solid ml-20 fa-receipt fa-sm"></i>temoignages</a></li>
+                    <li><a href=""><i class="fa-solid ml-20 fa-bell-concierge fa-sm"></i>nos services</a></li>
+                    <li><a href="<?php echo $index ? ".":"..";?>/php/contact.php"><i class="fa-solid ml-20 fa-phone fa-sm"></i>nous contacter</a></li>
                 </ul>
             </nav>
         </div>
@@ -56,7 +60,7 @@
                 if( isset($_SESSION['username'])) {?>
                     <i class="fa-solid fa-user" onclick='openNavRight()'></i>
                 <?php } else{?>
-                    <a href="./php/sign_up.php">
+                    <a href="<?php echo $index ? "./php":".";?>/sign_up.php">
                         <span class="btn">Sign up</span>
                     </a>
                 <?php }  
@@ -66,7 +70,7 @@
             <a href="javascript:void(0)" class="closebtn" onclick="closeNavRight()">&times;</a>
             <nav>
                 <ul>
-                    <li><a href="#"><i class="fa-solid ml-20 fa-shopping-cart fa-sm"></i>mon panier</a></li>
+                    <li><a href="<?php echo $index ? "./php":".";?>/cart.php"><i class="fa-solid ml-20 fa-shopping-cart fa-sm"></i>mon panier</a></li>
                     <li><a href="#"><i class="fa-solid ml-20 fa-star fa-sm"></i>mes commandes</a></li>
                     <li><a href="#"><i class="fa-solid ml-20 fa-scissors fa-sm"></i>proclamer mes 10%</a></li>
                     <li><a href="./php/log_out.php"><i class="fa-solid  ml-20 fa-right-from-bracket fa-sm"></i>se deconnecter</a></li>

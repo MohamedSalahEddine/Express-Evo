@@ -13,6 +13,14 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+.container{
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .btn{
     background-color: #E0AFA0;
     padding: 0.5rem 1rem;
@@ -24,4 +32,44 @@
 
 .ml-20{
     margin-right: 1rem;
+}
+
+
+
+@media only screen and (min-width: 425px) {
+    .container{
+        max-width: 425px;
+    }
+    
+}
+
+@media only screen and (min-width: 680px) {
+    .container{
+        max-width: 680px;
+    }
+    
+   
+}
+
+@media only screen and (min-width: 768px) {
+    .container{
+        max-width: 768px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .container{
+        max-width: 1024px;
+    }
+   
+}
+@media only screen and (min-width: 1380px) {
+    .container{
+        max-width: 1380px;
+    }
+}
+@media only screen and (min-width: 1536px) {
+    .container{
+        max-width: 1536px;
+    }
 }

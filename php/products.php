@@ -2,7 +2,7 @@
 <main class="main container">
     <section class="all_products">
         <?php
-            echo "<h1>Cart</h1>";
+            echo displayProducts();
         ?>
     </section>
 </main>
