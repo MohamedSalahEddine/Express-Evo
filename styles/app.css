@@ -1,17 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 :root{
-    --one-v:#1b0077;
-    --two-v:#452fa9;
-    --three-r:#5d011a;
-    --four-r:#b70323;
-    --five-g:#365f00;
+    --main-color:#f88b16;
+    --main-blue:#164f88;
 }
-
 *{
+    /* border: 1px solid var(--main-color); */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
+
+body{
+    background: linear-gradient(217deg, #f3eceeb2, rgb(255, 255, 255) 70.71%),
+                linear-gradient(-45deg, #f50056cb, rgb(255, 255, 255) 70.71%),
+                linear-gradient(217deg, #f50056cb, rgb(255, 255, 255) 70.71%);
+}
+
+.message{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 5vh;
+    background-color: var(--main-blue);
+    color: white;
+
+}
+
+/********************************************************************************** HEADER */
+
+
+/********************************************************************************** PRODUCT */
+.product{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: fit-content;
+    max-width: 350px;
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.product__btn{
+    background-color: var(--main-color);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 0.1rem;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+/* .product__btn:hover{
+    transform: scale(1.1);
+} */
+.product__btn:active{
+    color: var(--main-color);
+    background-color: white ;
+}
+.product__image{
+   width: 90%;
+   height: 30vh;
+}
+.product__image:hover{
+   transform: scale(1.1);
+}
+
+.product__description{
+    text-align: center;
+}
+/* PRODUCT ********************************************************************************* */
+
+/******************************************************************************************* CATEGORY */
+.category{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: fit-content;
+}
+/* CATEGORY **************************************************************************************************/
+
 
 .container{
     width: 100%;
@@ -21,19 +92,26 @@
     margin-right: auto;
 }
 
-.btn{
-    background-color: #E0AFA0;
-    padding: 0.5rem 1rem;
-    border-radius: 1rem;
+.btn__primary{
+    background-color: var(--main-color);
+    color: white;
+    padding: 0.2rem 0.4rem ;
+    cursor: pointer;
+    font-size: 0.5rem;
     font-weight: bold;
-    background-color: #333;
-    color: #F4F3EE;
+    border: none;
 }
 
 .ml-20{
+    margin-left: 1rem;
+}
+.mr-20{
     margin-right: 1rem;
 }
-
+.fa-solid{
+    font-size: 1.5rem;
+    cursor: pointer;
+}
 
 
 @media only screen and (min-width: 425px) {
@@ -55,21 +133,56 @@
     .container{
         max-width: 768px;
     }
+    .btn__primary{
+        padding: 0.4rem 0.8rem ;
+        font-size: 0.8rem;
+    }
 }
 
 @media only screen and (min-width: 1024px) {
     .container{
         max-width: 1024px;
     }
-   
+    .btn__primary{
+        padding: 0.5rem 1rem ;
+        font-size: 1rem;
+    }
+    
+    
 }
 @media only screen and (min-width: 1380px) {
     .container{
         max-width: 1380px;
     }
+    
 }
 @media only screen and (min-width: 1536px) {
     .container{
         max-width: 1536px;
     }
 }
+
+
+
+/* 
+@media only screen and (min-width: 425px) {
+    
+}
+
+@media only screen and (min-width: 680px) {
+    
+}
+
+@media only screen and (min-width: 768px) {
+    
+}
+
+@media only screen and (min-width: 1024px) {    
+    
+}
+@media only screen and (min-width: 1380px) {
+   
+}
+@media only screen and (min-width: 1536px) {
+    
+} */

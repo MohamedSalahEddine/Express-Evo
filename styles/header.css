@@ -1,20 +1,16 @@
-
 .header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.527);
     color: #333;
     position: sticky;
     top: 0;
     z-index: 1;
+    opacity: 0.8;
 }
 
-.fa-solid{
-    font-size: 1.5rem;
-}
-
-/********************************************* SIDEBAR */
+/********************************************* SIDENAV */
 
 .sidenav {
     height: 100%;
@@ -50,6 +46,11 @@
     margin-left: 3rem;
 }
 
+/**** SIDENAV ******************************************/
+
+
+/********************************************* SIDENAV_RIGHT */
+
 .sidenav_right {
     height: 100%;
     width: 0;
@@ -82,7 +83,28 @@
     right: 1.5rem;
     font-size: 2.2rem;
 }
+/**** SIDENAV_RIGHT ******************************************/
 
+/********************************************* HEADER_CENTER*/
+.header_center_nav{
+    display: none;
+}
+.header_center_nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    gap: 2rem;
+}
+.header_center_nav a{
+    text-decoration: none;
+    color: black;
+}
+/*HEADER_CENTER*********************************************/
+
+
+
+/********************************************* HEADER_RIGHT*/
 
 .header__right{
     display: flex;
@@ -97,8 +119,6 @@
     justify-content: center;
     gap: 0.2rem;
     border: none;
-    color: yellow;
-    /* color: rgb(214, 133, 133); */
     text-align: center;
     text-decoration: none;
     font-size: 1rem;
@@ -106,3 +126,38 @@
     border-radius: 0.5rem;
 }
 
+.a_log_in{
+    color: black;
+    text-decoration: none;
+}
+
+/**** HEADER_RIGHT ******************************************/
+
+
+
+@media only screen and (min-width: 425px) {
+
+}
+
+@media only screen and (min-width: 680px) {
+   
+}
+
+@media only screen and (min-width: 768px) {
+
+}
+
+@media only screen and (min-width: 1024px) {
+    .sidenav, .fa-solid.fa-bars{
+        display: none;
+    }
+    .header_center_nav{
+        display: flex;
+    }
+}
+@media only screen and (min-width: 1380px) {
+    
+}
+@media only screen and (min-width: 1536px) {
+    
+}

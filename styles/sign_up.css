@@ -2,18 +2,18 @@ body {
     font-family: Arial, sans-serif;
 }
 
-form {
+.sign_up_form {
     max-width: 400px;
     margin: 20px auto;
 }
 
-input {
+.sign_up_form input {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
 }
 
-button {
+.sign_up_form button {
     background-color: #4caf50;
     color: white;
     padding: 10px 15px;
@@ -22,11 +22,11 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.sign_up_form button:hover {
     background-color: #45a049;
 }
 
-.login-link {
+.sign_up_form .login-link {
     display: block;
     text-align: center;
     margin-top: 10px;

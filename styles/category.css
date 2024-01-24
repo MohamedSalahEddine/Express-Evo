@@ -1,0 +1,23 @@
+.products_by_category{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.products_by_category > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.products_by_category > a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:1rem;
+    margin: 4rem 0rem;
+    text-decoration: none;
+}
+a:active{
+    color: var(--main-color);
+}

@@ -1,5 +1,6 @@
 <?php
 
+    //////////////////////////////////////////////////////////////////////////////////////displayProducts//
     function displayProducts() {
         global $conn;
         $sql = "SELECT * FROM products";
@@ -21,7 +22,6 @@
 
     function displayProduct($product){
         $cleanedProductName = str_replace("'", "", $product[1]);
-
         return "<div class='product'>
                     <h3 class='product__title'>{$product[1]}</h3>
                     <img class='product__image' src='https://picsum.photos/200/180' alt='{$product[1]}'/>
@@ -33,5 +33,133 @@
                     <button class='product__btn'>Acheter</button>
                 </div>";
     }
+    //displayProducts/////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////displayCategories//
+    function displayCategories() {
+        global $conn;
+        $sql = "SELECT * FROM categories";
+        $result = $conn->query($sql);
+        $str = "";
+
+        if ($result->num_rows > 0) {
+            $categories = $result->fetch_all();
+
+            foreach($categories as $category){
+                $str .= displayCategory($category);
+            }
+            return $str;
+
+        } else {
+            echo "no categories found.";
+        }
+    }
+
+    function displayCategory($category){
+        $cleanedCategoryName = str_replace("'", "", $category[1]);
+        return "<a href='./category?type={$category[1]}'>
+                    <div class='category'>
+                        <h3 class='category__title'>{$category[1]}</h3>
+                        <img class='category__image' src='https://picsum.photos/200/180' alt='{$category[1]}'/>
+                    </div>
+                </a>
+                ";
+    }
+
+    //displayCategories/////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////getProductsByCategory//
+
+    function getProductsByCategory($category) {
+        global $conn;
+        $sql = "SELECT * FROM products 
+        inner join product_category on products.product_id=product_category.product_id 
+        inner join categories on product_category.category_id=categories.category_id 
+        where categories.name='{$category}'";
+        $result = $conn->query($sql);
+        $str = "";
+
+        if ($result->num_rows > 0) {
+            $products = $result->fetch_all();
+
+            foreach($products as $product){
+                $str .= displayProduct($product);
+            }
+            return $str;
+
+        } else {
+            echo "no products by this category found.";
+        }
+    }
+
+    
+    //getProductsByCategory/////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////getAllReviewsWithUserNames//
+
+    function getAllReviewsWithUserNames() {
+        global $conn;
+        $sql = "SELECT customer_reviews.*, users.username
+                FROM customer_reviews
+                INNER JOIN users ON customer_reviews.user_id = users.user_id order by customer_reviews.review_date desc";
+        $result = $conn->query($sql);
+        $html = "";
+    
+        if ($result->num_rows > 0) {
+            $reviews = $result->fetch_all(MYSQLI_ASSOC);
+    
+            foreach ($reviews as $review) {
+                $html .= renderReviewWithUserName($review);
+            }
+    
+            return $html;
+        } else {
+            return "No reviews found.";
+        }
+    }
+
+    function renderReviewWithUserName($review) {
+        $cleanedComment = htmlspecialchars($review['comment']);
+        
+        // Convert the rating to star emojis
+        $ratingStars = str_repeat('⭐', $review['rating']);
+    
+        $html = "<div class='review'>
+                    <p class='review__rating'><strong>Rating:</strong> {$ratingStars}</p>
+                    <p class='review__user-name'><strong>User Name:</strong> {$review['username']}</p>
+                    <p class='review__comment'><strong>Comment:</strong> {$cleanedComment}</p>
+                    <p class='review__date'><strong>Date:</strong> {$review['review_date']}</p>
+                </div>";
+    
+        return $html;
+    }
+    
+
+    //getAllReviewsWithUserNames/////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////can_comment//
+
+    function can_comment(){
+        if(!isset($_SESSION['user_id'])){
+            return false;
+        }
+        global $conn;
+        $sql  = "SELECT * from users INNER JOIN customer_reviews 
+        on users.user_id=customer_reviews.user_id where customer_reviews.user_id={$_SESSION['user_id']}";
+        $result = $conn->query($sql);
+        if($result->num_rows > 0 ){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    //can_comment/////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////display_message//
+
+    function display_message($message){
+        // echo "<div class='message'>{$message}<i class='fa-solid fa-x' onClick='alert('heyy')'></i></div>";
+        echo "<div class='message'>{$message}<i class='fa-solid fa-x' onclick='remove(this)'></i></div>";
+    }
+
+    //display_message/////////////////////////////////////////////////////////////////////////////
 
 ?>
+
+

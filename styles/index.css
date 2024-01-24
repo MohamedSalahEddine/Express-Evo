@@ -1,0 +1,28 @@
+main{
+    height: 300vh;
+    margin-top: 2rem;
+}
+*{
+    /* border: 1px solid red; */
+}
+.what_we_do{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+.left{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.what_we_do h1{
+    font-size: 2rem;
+    text-align: center;
+}
+.what_we_do img{
+    width: 50%;
+}

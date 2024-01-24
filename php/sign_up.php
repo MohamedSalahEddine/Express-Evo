@@ -7,10 +7,11 @@
         $phone = mysqli_real_escape_string($conn, $_POST['phone']);
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT); 
 
-        $sql = "INSERT INTO users (username, email, phone, password) VALUES ('$username', '$email', '$phone', '$password')";
+        $sql = "INSERT INTO users (username, email, phone, password) VALUES ('$name', '$email', '$phone', '$password')";
 
         if ($conn->query($sql) === TRUE) {
             echo "Registration successful!";
+            header('Location: log_in.php');
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
@@ -22,7 +23,7 @@
 <body>
     
     <?php  include_once("../includes/header.php");?>
-    <form action="sign_up.php" method="post">
+    <form action="sign_up.php" method="post" class="sign_up_form">
         <h2>Sign Up</h2>
         <label for="name">Name:</label>
         <input type="text" name="username" required>

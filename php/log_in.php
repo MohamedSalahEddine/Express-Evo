@@ -35,15 +35,16 @@
 <body>
     
     <?php include('../includes/header.php'); ?>
-    <form action="log_in.php" method="post">
-        <h2>Sign In</h2>
+    <form action="log_in.php" method="post" class="log_in_form">
+        <h2>Mon compte</h2>
         <label for="email">Email:</label>
         <input type="email" name="email" required>
 
-        <label for="password">Password:</label>
+        <label for="password">Mot de passe:</label>
         <input type="password" name="password" required>
 
-        <button type="submit">Sign In</button>
+        <button type="submit">Se connecter</button>
+        <p class="login-link">Vous n'avez pas de compte? <a href="sign_up.php">Créer un compte</a></p>
     </form>
 
 </body>
