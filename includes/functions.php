@@ -23,6 +23,7 @@
     function displayProduct($product){
         $cleanedProductName = str_replace("'", "", $product[1]);
         return "<div class='product'>
+                    <span class='product_id_hidden'>{$product[0]}</span>
                     <h3 class='product__title'>{$product[1]}</h3>
                     <img class='product__image' src='https://picsum.photos/200/180' alt='{$product[1]}'/>
                     <h5 class='product__price'><span>$</span>{$product[2]}</h5>
@@ -30,7 +31,7 @@
                         {$product[4]}
                     </p>
 
-                    <button class='product__btn'>Acheter</button>
+                    <button class='product_add_btn'>Acheter</button>
                 </div>";
     }
     //displayProducts/////////////////////////////////////////////////////////////////////////////////////

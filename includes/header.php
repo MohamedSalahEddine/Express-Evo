@@ -31,7 +31,7 @@
             echo "<link rel='stylesheet' href='../styles/header.css'>";
             echo "<link rel='stylesheet' href='../styles/footer.css'>";
             echo "<link rel='stylesheet' href='../styles/app.css'>";
-            echo "<script src=../js/{$jsFilePath} defer></script>";
+            echo "<script src=../js/{$jsFilePath} type='module' defer></script>";
             echo "<script src=../js/header.js defer></script>";
         }
     ?>

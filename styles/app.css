@@ -9,6 +9,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    user-select: none;
 }
 
 body{
@@ -42,9 +43,10 @@ body{
     background-color: white;
     border-radius: 0.5rem;
     padding: 1rem;
+    cursor: pointer;
 }
 
-.product__btn{
+.product_add_btn{
     background-color: var(--main-color);
     color: white;
     padding: 0.5rem;
@@ -53,10 +55,8 @@ body{
     font-size: 1.2rem;
     cursor: pointer;
 }
-/* .product__btn:hover{
-    transform: scale(1.1);
-} */
-.product__btn:active{
+
+.product_add_btn:active{
     color: var(--main-color);
     background-color: white ;
 }
@@ -65,11 +65,16 @@ body{
    height: 30vh;
 }
 .product__image:hover{
-   transform: scale(1.1);
+   transform: scale(1.05);
+   border-radius: 5px;
 }
 
 .product__description{
     text-align: center;
+}
+
+.product_id_hidden{
+    display: none;
 }
 /* PRODUCT ********************************************************************************* */
 
@@ -83,6 +88,22 @@ body{
 }
 /* CATEGORY **************************************************************************************************/
 
+/********************************************************************************************* side_cart */
+.side_cart{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    position: fixed;
+    top: 70px;
+    right: 0;
+    z-index: 4;
+    height: 100vh;
+    overflow-y: scroll;
+
+}
+
+/* side_cart *********************************************************************************************/
 
 .container{
     width: 100%;
