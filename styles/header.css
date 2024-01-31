@@ -7,6 +7,7 @@
     position: sticky;
     top: 0;
     z-index: 1;
+    height: var(--header-hight);
     /* opacity: 0.8; */
 }
 

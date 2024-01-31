@@ -7,7 +7,7 @@ main {
     /* border: 1px solid red; */
 }
 /********************************************************************************************* all_categories */
-.all_categories{
+/* .all_categories{
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -29,7 +29,7 @@ main {
 
 .all_categories::-webkit-scrollbar-track {
 background-color: #c9b0b0;
-}
+} */
 /* all_categories *********************************************************************************************/
 /********************************************************************************************* all_products */
 .all_products{

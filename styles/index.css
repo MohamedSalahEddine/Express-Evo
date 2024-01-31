@@ -1,15 +1,48 @@
 main{
-    height: 300vh;
+    /* height: 300vh; */
     margin-top: 2rem;
 }
+
 *{
     /* border: 1px solid red; */
 }
+
+/********************************************************************************************************** div_recherche */
+.div_recherche{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    margin-bottom: 2rem;
+}
+
+.div_recherche input{
+    width:80%;
+    border: none;
+    height: 2rem;
+    outline: none;
+    text-align: center;
+}
+
+.div_recherche .div_recherche__categories{
+    background-color: white;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0rem 1rem;
+}
+
+/* div_recherche **********************************************************************************************************/
+
+
 .what_we_do{
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 2rem;
+    padding: 3rem;
 }
 .left{
     display: flex;

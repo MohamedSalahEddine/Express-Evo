@@ -2,6 +2,7 @@
 :root{
     --main-color:#f88b16;
     --main-blue:#164f88;
+    --header-hight:10vh;
 }
 *{
     /* border: 1px solid var(--main-color); */
@@ -77,6 +78,85 @@ body{
     display: none;
 }
 /* PRODUCT ********************************************************************************* */
+/********************************************************************************** SIDECART PRODUCT */
+
+.side_product {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.side_product__image {
+    width: 100px; /* Set your desired width */
+    height: auto;
+}
+
+.side_product_right {
+    display: flex;
+    flex-direction: column;
+}
+
+.side_product_remove_btn {
+    background-color: #ff5555;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Style for the chevron icons */
+.side_product_right div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fa-chevron-up,
+.fa-chevron-down {
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Hide side_product_id_hidden */
+.side_product_id_hidden {
+    display: none;
+}
+/* SIDECART PRODUCT ********************************************************************************* */
+
+.product_add_btn{
+    background-color: var(--main-color);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 0.1rem;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.product_add_btn:active{
+    color: var(--main-color);
+    background-color: white ;
+}
+.product__image{
+   width: 90%;
+   height: 30vh;
+}
+.product__image:hover{
+   transform: scale(1.05);
+   border-radius: 5px;
+}
+
+.product__description{
+    text-align: center;
+}
+
+.product_id_hidden{
+    display: none;
+}
+/* SIDECART PRODUCT ********************************************************************************* */
 
 /******************************************************************************************* CATEGORY */
 .category{
@@ -95,15 +175,86 @@ body{
     justify-content: flex-start;
     flex-direction: column;
     position: fixed;
-    top: 70px;
+    top: var(--header-hight);
     right: 0;
     z-index: 4;
-    height: 100vh;
+    /* height: 90vh; */
     overflow-y: scroll;
-
+    background-color: red;
+    padding: 2rem 1rem;
+    gap: 1rem;
 }
 
 /* side_cart *********************************************************************************************/
+
+/************************************************************************************************ categories*/
+
+.all_categories * {
+    /* border: 1px solid red; */
+}
+.all_categories{
+    gap: 0.4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+}
+.all_categories a {
+    text-decoration: none;
+    color: #c9b0b0;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    max-height: 15rem;
+    /* border: 1px solid blue; */
+   
+}
+
+.all_categories img {
+    width: 100%;
+    height: 100%;
+    /* width: fit-content;
+    height: fit-content; */
+}
+.all_categories div {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.category__title{
+    position: absolute;
+    color: white;
+    font-size: 2rem;
+}
+
+.all_categories img:hover {
+    transform: scale(1.05);
+}
+
+.category{
+    /* padding: 1rem 6rem; */
+
+    /* text-align: center; */
+}
+.all_categories::-webkit-scrollbar {
+    width: 20px;
+}
+
+.all_categories::-webkit-scrollbar-thumb {    
+    background-color: var(--main-color);
+    border-radius: 2px;
+}
+
+.all_categories::-webkit-scrollbar-track {
+background-color: #c9b0b0;
+}
+/*categories*********************************************************************************************** */
+
 
 .container{
     width: 100%;

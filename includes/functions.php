@@ -57,13 +57,14 @@
 
     function displayCategory($category){
         $cleanedCategoryName = str_replace("'", "", $category[1]);
-        return "<a href='./category?type={$category[1]}'>
+        $php_link = basename($_SERVER['PHP_SELF'], '.php') == "index" ? "/php":"";
+        $php_src = basename($_SERVER['PHP_SELF'], '.php') == "index" ? ".":"..";
+        return "<a href='.{$php_link}/category?type={$category[1]}'>
                     <div class='category'>
+                        <img class='category__image' src='{$php_src}/images/{$category[2]}' alt='{$category[1]}'/>
                         <h3 class='category__title'>{$category[1]}</h3>
-                        <img class='category__image' src='https://picsum.photos/200/180' alt='{$category[1]}'/>
                     </div>
-                </a>
-                ";
+                </a>";
     }
 
     //displayCategories/////////////////////////////////////////////////////////////////////////////
@@ -120,7 +121,7 @@
         $cleanedComment = htmlspecialchars($review['comment']);
         
         // Convert the rating to star emojis
-        $ratingStars = str_repeat('⭐', $review['rating']);
+        $ratingStars = str_repeat('⭐', intval($review['rating']));
     
         $html = "<div class='review'>
                     <p class='review__rating'><strong>Rating:</strong> {$ratingStars}</p>
