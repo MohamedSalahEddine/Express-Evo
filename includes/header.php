@@ -22,6 +22,7 @@
             echo "<link rel='stylesheet' href='./styles/app.css'>";
             echo "<script src=./js/{$jsFilePath} defer></script>";
             echo "<script src=./js/header.js defer></script>";
+            echo "<script src=./js/index.js defer></script>";
             
             $index = true;
         }
@@ -33,6 +34,7 @@
             echo "<link rel='stylesheet' href='../styles/app.css'>";
             echo "<script src=../js/{$jsFilePath} type='module' defer></script>";
             echo "<script src=../js/header.js defer></script>";
+            echo "<script src=../js/index.js defer></script>";
         }
     ?>
     

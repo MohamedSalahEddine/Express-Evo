@@ -3,10 +3,6 @@ main{
     margin-top: 2rem;
 }
 
-*{
-    /* border: 1px solid red; */
-}
-
 /********************************************************************************************************** div_recherche */
 .div_recherche{
     display: flex;
