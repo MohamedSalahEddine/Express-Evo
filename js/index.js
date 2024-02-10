@@ -22,6 +22,8 @@ function func_product_add_btn(e){
         if(xhr.status >= 200 && xhr.status < 300){
             // let response = JSON.parse(xhr.responseText);
             // console.log('response from php : '+ response);
+            console.log('good')
+
         }else{
             console.log('error : '+ xhr.statusText);
         }
@@ -60,6 +62,7 @@ function remove_from_sideCart(e){
         })
         div_product_side.remove();
         localStorage.setItem('cart', JSON.stringify(cart));
+        update_total()
     }
 }
 
@@ -123,6 +126,16 @@ function render_product(product){
     quantity_up.classList.add('fa-solid');
     quantity_up.classList.add('fa-chevron-up');
     quantity_up.addEventListener('click', function(){
+        fetch("../php/products.php", {
+            method: "POST",
+            headers : {
+                'Content-type' : "application/json"
+            },
+            body : JSON.stringify({
+                koki : "koki"
+            })
+        })
+
         quantity_input.value++
     });
     quantity_up.addEventListener('click', update_sub_total);
@@ -170,7 +183,7 @@ function update_sub_total(e){
     let quantity = parseInt(e.target.parentNode.querySelector('.side_product__number').value) ;
     let price = parseFloat(e.target.parentNode.querySelector('.side_product__price').textContent);
     let side_product__sub_total_span = e.target.parentNode.querySelector('.side_product__sub_total span')
-    if(quantity < 1){
+    if( isNaN(quantity) || quantity < 1){
         e.target.parentNode.querySelector('.side_product__number').value = 1
         side_product__sub_total_span.textContent = price
         update_total()

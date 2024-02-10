@@ -2,10 +2,17 @@
     if(isset($_POST['productId'])){
         $productId = $_POST['productId'];
         $sql ="INSERT INTO `order_items` ( `order_id`, `product_id`, `quantity`)  VALUES ( '1', '$productId', '7')";
-        if($conn->query($sql)){
-            echo "nice";
-        }
     }
+    // if(isset($_POST['koki'])){
+    //     $koki = $_POST['koki'];
+    //     $sql ="INSERT INTO `order_items` ( `order_id`, `product_id`, `quantity`)  VALUES ( '1', '$productId', '69')";
+    // }
+    // $input_data = file_get_contents("php://input");
+    // // Decode JSON data
+    // $data = json_decode($input_data, true);
+    // if($data != null){
+    //     $sql ="INSERT INTO `order_items` ( `order_id`, `product_id`, `quantity`)  VALUES ( '1', '69', '69')";
+    // }
 ?>
 <main class="main container">
     <h2>Categories </h2>
@@ -20,14 +27,8 @@
             echo displayProducts();
         ?>
     </section>
-    <section class="side_cart">
-        <div class="side_cart_total">
-            <h4 class="h4_total">Total : $<span>1999.99</span></h4>
-            <button class="btn_proceed_to_checkout">Payer</button>
-        </div>
-        <div class="side_cart_items">
-
-        </div>
-    </section>
+    <?php
+        include('../includes/side_cart.php');
+    ?>
 </main>
 <?php include('../includes/footer.php'); ?>

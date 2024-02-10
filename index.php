@@ -18,15 +18,10 @@
         ?>
     </section>
    
-    <section class="side_cart">
-        <div class="side_cart_total">
-            <h4 class="h4_total">Total : $<span>1999.99</span></h4>
-            <button class="btn_proceed_to_checkout">Aller au paiement</button>
-        </div>
-        <div class="side_cart_items">
+    <?php
+        include('./includes/side_cart.php');
+    ?>
 
-        </div>
-    </section>
     <div class="what_we_do">
         <div class="left">
             <h1>Magazinez aux prix les plus compétitifs</h1>
