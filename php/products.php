@@ -2,6 +2,9 @@
     if(isset($_POST['productId'])){
         $productId = $_POST['productId'];
         $sql ="INSERT INTO `order_items` ( `order_id`, `product_id`, `quantity`)  VALUES ( '1', '$productId', '7')";
+        if($conn->query($sql)){
+            echo "nice";
+        }
     }
     // if(isset($_POST['koki'])){
     //     $koki = $_POST['koki'];
