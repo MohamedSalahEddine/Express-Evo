@@ -22,7 +22,7 @@ function func_product_add_btn(e){
         if(xhr.status >= 200 && xhr.status < 300){
             // let response = JSON.parse(xhr.responseText);
             // console.log('response from php : '+ response);
-            console.log('good')
+            // console.log('good')
 
         }else{
             console.log('error : '+ xhr.statusText);
@@ -80,7 +80,7 @@ function display_products(){
 } 
 
 function render_product(product){
-    let {product_id, product__title, product__image, product__price, product__description} = product;
+    let {product_id, product__title, product__image, product__price, product__description, quantity} = product;
     product__price = product__price.substring(1);
 
     const productDiv = document.createElement('div');
@@ -111,33 +111,21 @@ function render_product(product){
     const side_product__sub_total = document.createElement('h5');
     side_product__sub_total.classList.add('side_product__sub_total');
         const sub_total_span = document.createElement('span');
-        sub_total_span.textContent = product__price;
+        sub_total_span.textContent = (product__price * parseInt(quantity)).toFixed(2);
     side_product__sub_total.textContent=`Sous-total : $`;
     side_product__sub_total.appendChild(sub_total_span)
 
     // quantity_
     const quantity_input = document.createElement('input');
     quantity_input.classList.add('side_product__number');
-    quantity_input.value = 1;
+    quantity_input.value = quantity;
     quantity_input.addEventListener('input', update_sub_total)
 
     // quantity_up
     const quantity_up = document.createElement('i');
     quantity_up.classList.add('fa-solid');
     quantity_up.classList.add('fa-chevron-up');
-    quantity_up.addEventListener('click', function(){
-        fetch("../php/products.php", {
-            method: "POST",
-            headers : {
-                'Content-type' : "application/json"
-            },
-            body : JSON.stringify({
-                koki : "koki"
-            })
-        })
-
-        quantity_input.value++
-    });
+    quantity_up.addEventListener('click', () => handle_quantity_up(product_id));
     quantity_up.addEventListener('click', update_sub_total);
 
     // quantity_down
@@ -145,12 +133,7 @@ function render_product(product){
     quantity_down.classList.add('fa-solid');
     quantity_down.classList.add('fa-chevron-down');
     quantity_down.classList.add('fa-chevron-down');
-    quantity_down.addEventListener('click', function(){
-        if(quantity_input.value <= 1){
-            return
-        }
-        quantity_input.value--
-    });
+    quantity_down.addEventListener('click', () => handle_quantity_down(product_id));
     quantity_down.addEventListener('click', update_sub_total);
 
 
@@ -194,6 +177,61 @@ function update_sub_total(e){
     update_total()
 }
 // update_sub_total ////////////////////////////////////////////////////////////////////////////////////////// 
+
+
+////////////////////////////////////////////////////////////////////////////////////////// handle_quantity_up // 
+function handle_quantity_up(product_id){
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', 'products.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onload = function(){
+        if(xhr.status >= 200 && xhr.status < 300){
+            // let response = JSON.parse(xhr.responseText);
+            // console.log('response from php : '+ response);
+            // console.log('good')
+        }else{
+            console.log('error : '+ xhr.statusText);
+        }
+    }
+    xhr.send(`productId=${product_id}&up=up`);
+
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || []
+    let index = cart.findIndex( (item) => item.product_id === product_id);
+    cart[index].quantity++
+    localStorage.setItem('cart', JSON.stringify(cart));
+    display_products()
+    
+}
+// handle_quantity_up ////////////////////////////////////////////////////////////////////////////////////////// 
+
+////////////////////////////////////////////////////////////////////////////////////////// handle_quantity_down // 
+function handle_quantity_down(product_id){
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', 'products.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onload = function(){
+        if(xhr.status >= 200 && xhr.status < 300){
+            // let response = JSON.parse(xhr.responseText);
+            // console.log('response from php : '+ response);
+            // console.log('good')
+        }else{
+            console.log('error : '+ xhr.statusText);
+        }
+    }
+    xhr.send(`productId=${product_id}&down=down`);
+
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || []
+    let index = cart.findIndex( (item) => item.product_id === product_id);
+    cart[index].quantity--
+    localStorage.setItem('cart', JSON.stringify(cart));
+    display_products()
+    
+}
+// handle_quantity_down ////////////////////////////////////////////////////////////////////////////////////////// 
+
+
 ////////////////////////////////////////////////////////////////////////////////////////// update_total // 
 function update_total(){
     let sub_total_spans = document.querySelectorAll('.side_product .side_product__sub_total span');
@@ -203,7 +241,6 @@ function update_total(){
         total += parseFloat(sub_total_span.textContent);
     }
     h4_total_span.textContent = total.toFixed(2)
-    console.log(total)
 }
 // update_total ////////////////////////////////////////////////////////////////////////////////////////// 
 
@@ -219,7 +256,8 @@ function extract_data(product_obj){
         product__title       ,
         product__image       ,
         product__price       ,
-        product__description 
+        product__description ,
+        quantity : 1 ,
     }
 }
 
