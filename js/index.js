@@ -28,7 +28,7 @@ function func_product_add_btn(e){
             console.log('error : '+ xhr.statusText);
         }
     }
-    xhr.send('productId='+product_id);
+    xhr.send('insert_product&productId='+product_id);
 }
 
 function add_to_cart(product){
@@ -119,6 +119,7 @@ function render_product(product){
     const quantity_input = document.createElement('input');
     quantity_input.classList.add('side_product__number');
     quantity_input.value = quantity;
+    quantity_input.addEventListener('input', () => quantity_input.value > 1 && handle_quantity_input(product_id, quantity_input.value));
     quantity_input.addEventListener('input', update_sub_total)
 
     // quantity_up
@@ -133,7 +134,7 @@ function render_product(product){
     quantity_down.classList.add('fa-solid');
     quantity_down.classList.add('fa-chevron-down');
     quantity_down.classList.add('fa-chevron-down');
-    quantity_down.addEventListener('click', () => handle_quantity_down(product_id));
+    quantity_down.addEventListener('click', () => quantity_input.value > 1 && handle_quantity_down(product_id));
     quantity_down.addEventListener('click', update_sub_total);
 
 
@@ -193,7 +194,8 @@ function handle_quantity_up(product_id){
             console.log('error : '+ xhr.statusText);
         }
     }
-    xhr.send(`productId=${product_id}&up=up`);
+    xhr.send(`quantity_up&productId=${product_id}`);
+
 
 
     let cart = JSON.parse(localStorage.getItem('cart')) || []
@@ -219,7 +221,7 @@ function handle_quantity_down(product_id){
             console.log('error : '+ xhr.statusText);
         }
     }
-    xhr.send(`productId=${product_id}&down=down`);
+    xhr.send(`quantity_down&productId=${product_id}`);
 
 
     let cart = JSON.parse(localStorage.getItem('cart')) || []
@@ -230,6 +232,32 @@ function handle_quantity_down(product_id){
     
 }
 // handle_quantity_down ////////////////////////////////////////////////////////////////////////////////////////// 
+
+////////////////////////////////////////////////////////////////////////////////////////// handle_quantity_input // 
+function handle_quantity_input(product_id, quantity){
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', 'products.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onload = function(){
+        if(xhr.status >= 200 && xhr.status < 300){
+            // let response = JSON.parse(xhr.responseText);
+            // console.log('response from php : '+ response);
+            // console.log('good')
+        }else{
+            console.log('error : '+ xhr.statusText);
+        }
+    }
+    xhr.send(`quantity_input&productId=${product_id}&quantity=${quantity}`);
+
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || []
+    let index = cart.findIndex( (item) => item.product_id === product_id);
+    cart[index].quantity = quantity
+    localStorage.setItem('cart', JSON.stringify(cart));
+    display_products()
+    
+}
+// handle_quantity_input ////////////////////////////////////////////////////////////////////////////////////////// 
 
 
 ////////////////////////////////////////////////////////////////////////////////////////// update_total // 
