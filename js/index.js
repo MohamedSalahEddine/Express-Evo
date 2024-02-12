@@ -62,6 +62,21 @@ function remove_from_sideCart(e){
         })
         div_product_side.remove();
         localStorage.setItem('cart', JSON.stringify(cart));
+
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', 'products.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onload = function(){
+            if(xhr.status >= 200 && xhr.status < 300){
+                // let response = JSON.parse(xhr.responseText);
+                // console.log('response from php : '+ response);
+                // console.log('good')
+            }else{
+                console.log('error : '+ xhr.statusText);
+            }
+        }
+        xhr.send(`remove_product&productId=${product_id}`);
+
         update_total()
     }
 }
@@ -119,7 +134,7 @@ function render_product(product){
     const quantity_input = document.createElement('input');
     quantity_input.classList.add('side_product__number');
     quantity_input.value = quantity;
-    quantity_input.addEventListener('input', () => quantity_input.value > 1 && handle_quantity_input(product_id, quantity_input.value));
+    quantity_input.addEventListener('input', () => handle_quantity_input(product_id, quantity_input.value));
     quantity_input.addEventListener('input', update_sub_total)
 
     // quantity_up
@@ -235,6 +250,7 @@ function handle_quantity_down(product_id){
 
 ////////////////////////////////////////////////////////////////////////////////////////// handle_quantity_input // 
 function handle_quantity_input(product_id, quantity){
+    if(quantity < 1 || isNaN(quantity)) quantity = 1;
     let xhr = new XMLHttpRequest();
     xhr.open('POST', 'products.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
