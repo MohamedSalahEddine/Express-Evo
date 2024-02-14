@@ -16,7 +16,7 @@ function func_product_add_btn(e){
         return
     }
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', 'products.php', true);
+    xhr.open('POST', '/EXPRESS-EVO/php/products.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onload = function(){
         if(xhr.status >= 200 && xhr.status < 300){
@@ -64,7 +64,7 @@ function remove_from_sideCart(e){
         localStorage.setItem('cart', JSON.stringify(cart));
 
         let xhr = new XMLHttpRequest();
-        xhr.open('POST', 'products.php', true);
+        xhr.open('POST', '/EXPRESS-EVO/php/products.php', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.onload = function(){
             if(xhr.status >= 200 && xhr.status < 300){
@@ -76,7 +76,6 @@ function remove_from_sideCart(e){
             }
         }
         xhr.send(`remove_product&productId=${product_id}`);
-
         update_total()
     }
 }
@@ -198,7 +197,7 @@ function update_sub_total(e){
 ////////////////////////////////////////////////////////////////////////////////////////// handle_quantity_up // 
 function handle_quantity_up(product_id){
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', 'products.php', true);
+    xhr.open('POST', '/EXPRESS-EVO/php/products.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onload = function(){
         if(xhr.status >= 200 && xhr.status < 300){
@@ -225,7 +224,7 @@ function handle_quantity_up(product_id){
 ////////////////////////////////////////////////////////////////////////////////////////// handle_quantity_down // 
 function handle_quantity_down(product_id){
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', 'products.php', true);
+    xhr.open('POST', '/EXPRESS-EVO/php/products.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onload = function(){
         if(xhr.status >= 200 && xhr.status < 300){
@@ -252,7 +251,7 @@ function handle_quantity_down(product_id){
 function handle_quantity_input(product_id, quantity){
     if(quantity < 1 || isNaN(quantity)) quantity = 1;
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', 'products.php', true);
+    xhr.open('POST', '/EXPRESS-EVO/php/products.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onload = function(){
         if(xhr.status >= 200 && xhr.status < 300){
