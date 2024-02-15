@@ -4,7 +4,7 @@
     carousel
     categories
         grid 3*2 -->
-
+    
     <div class="div_recherche container">
         <input type="text" placeholder="Rechercher un produit">
         <div class="div_recherche__categories">

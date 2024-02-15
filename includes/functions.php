@@ -153,11 +153,33 @@
     }
 
     //can_comment/////////////////////////////////////////////////////////////////////////////
+
     /////////////////////////////////////////////////////////////////////////////display_message//
 
     function display_message($message){
-        // echo "<div class='message'>{$message}<i class='fa-solid fa-x' onClick='alert('heyy')'></i></div>";
         echo "<div class='message'>{$message}<i class='fa-solid fa-x' onclick='remove(this)'></i></div>";
+    }
+
+    //display_message/////////////////////////////////////////////////////////////////////////////
+
+    /////////////////////////////////////////////////////////////////////////////get_order_id//
+
+    function get_order_id(){
+        if(!isset($_SESSION['user_id'])){
+            return;
+        }
+        global $conn;
+        $user_id = $_SESSION['user_id'];
+        $sql = "SELECT order_id from orders where user_id={$user_id} and order_date is null";
+        $result = $conn->query($sql);
+        if($result->num_rows > 0){
+            $row = $result->fetch_assoc();
+            return $row["order_id"];
+        }else{
+            $sql = "INSERT into orders(user_id) values ($user_id)";
+            $conn->query($sql);
+            return get_order_id();
+        }
     }
 
     //display_message/////////////////////////////////////////////////////////////////////////////

@@ -1,8 +1,11 @@
-<?php include('../includes/header.php');
+<?php 
+    include('../includes/header.php');
 
     if(isset($_POST['insert_product'])){
+        // $order_id = 55;
+        $order_id = get_order_id();
         $productId = $_POST['productId'];
-        $sql ="INSERT INTO `order_items` ( `order_id`, `product_id`, `quantity`)  VALUES ( '1', '$productId', 1)";
+        $sql ="INSERT INTO `order_items` ( `order_id`, `product_id`, `quantity`)  VALUES ( '$order_id', '$productId', 1)";
         if($conn->query($sql)){
             echo "nice";
         }
@@ -15,6 +18,7 @@
             echo "nice";
         }
     }
+
     if( isset($_POST['quantity_down'])){
         $productId = $_POST['productId'];
         $sql ="UPDATE `order_items` SET quantity = quantity -1 where product_id = {$productId}";
