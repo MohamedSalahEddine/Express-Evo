@@ -1,12 +1,8 @@
 <?php include('./includes/header.php'); ?>
 <main class="main container">
-    <!-- barre de recherche 
-    carousel
-    categories
-        grid 3*2 -->
     
     <div class="div_recherche container">
-        <input type="text" placeholder="Rechercher un produit">
+        <input type="text" name="search_input" placeholder="Rechercher un produit">
         <div class="div_recherche__categories">
             <span>Categories</span>
             <i class="fa-solid fa-arrow-down fa-sm"></i>

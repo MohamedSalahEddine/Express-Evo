@@ -12,8 +12,8 @@
         <div class="center">
             <h3>Envoyez-nous un email</h3>
             <i class="fa-solid fa-envelope"></i>
-            <input type="email" placeholder="yourEmail@provider.com">
-            <input type="text" placeholder="Sujet">
+            <input type="email"name ="email_input"  placeholder="yourEmail@provider.com">
+            <input type="text" name ="subject_input" placeholder="Sujet">
             <textarea name="email_area" placeholder="ecrivez ici =)"></textarea>
             <button class="btn_contact btn_center">Envoyer</button>
         </div>

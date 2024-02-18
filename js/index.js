@@ -1,7 +1,6 @@
-let side_cart = document.querySelector('.side_cart');
-let side_cart_items = document.querySelector('.side_cart_items');
+const side_cart = document.querySelector('.side_cart');
+const side_cart_items = document.querySelector('.side_cart_items');
 display_products()
-
 //////////////////////////////////////////////////////////////////////////////////////////// adding to sidecart
 let product_add_btns = document.querySelectorAll('.product_add_btn');
 for(let product_add_btn of product_add_btns){
@@ -86,6 +85,7 @@ function remove_from_sideCart(e){
 
 function display_products(){
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    if(side_cart_items == null) return;
     side_cart_items.innerHTML = ""
     for(let product of cart){
         render_product(product);
@@ -133,6 +133,7 @@ function render_product(product){
     const quantity_input = document.createElement('input');
     quantity_input.classList.add('side_product__number');
     quantity_input.value = quantity;
+    quantity_input.name = "quantity";
     quantity_input.addEventListener('input', () => handle_quantity_input(product_id, quantity_input.value));
     quantity_input.addEventListener('input', update_sub_total)
 
@@ -263,7 +264,6 @@ function handle_quantity_input(product_id, quantity){
         }
     }
     xhr.send(`quantity_input&productId=${product_id}&quantity=${quantity}`);
-
 
     let cart = JSON.parse(localStorage.getItem('cart')) || []
     let index = cart.findIndex( (item) => item.product_id === product_id);

@@ -10,7 +10,7 @@
         </div>
         <div class="footer__center">
             <h3>Newsletter</h3>
-            <input type="email" placeholder="tonEmail@provider.com">
+            <input type="email" name="email_input" placeholder="tonEmail@provider.com">
             <button>S'inscrire</button>
         </div>
         <div class="footer__right">
